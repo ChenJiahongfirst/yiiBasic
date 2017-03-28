@@ -8,14 +8,9 @@ use app\models\Test;
 class HelloController extends Controller {
 
     public function actionIndex() {
-        $test=new Test();
-        $test->id=3;
-        $test->title='title3';
-        $test->validate();
-        if($test->hasErrors()){
-            echo 'data has error';
-            die;
-        }
+        $test = Test::find()->where(['id' => 2])->one();
+        $test->id=2;
+        $test->title='title2';
         $test->save();
     }
 
