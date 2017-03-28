@@ -8,11 +8,15 @@ use app\models\Test;
 class HelloController extends Controller {
 
     public function actionIndex() {
-        //删除数据
-//        $results = Test::find()->where(['id' => 1])->all();
-//        $results[0]->delete();
-        
-//       Test::deleteAll('id>:id',array(':id'=>0));
+        $test=new Test();
+        $test->id=3;
+        $test->title='title3';
+        $test->validate();
+        if($test->hasErrors()){
+            echo 'data has error';
+            die;
+        }
+        $test->save();
     }
 
 }
